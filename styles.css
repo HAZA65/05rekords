@@ -1,0 +1,74 @@
+/* Add the CSS styles here */
+[glitch] {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    color: #52fe6f;
+    font-family: "PexicoMicro-Regular", sans-serif;
+}
+
+[glitch]:focus {
+    outline: none; /* Remove the focus outline */
+}
+
+[glitch]:after {
+    --slice-0: inset(50% 0 50% 0%);
+    --slice-1: inset(0 0 50% 0);
+    --slice-2: inset(0 0 0 0);
+    --slice-3: inset(50% 0 0 0);
+    content: attr(glitch);
+    visibility: visible;
+    position: absolute;
+    display: block;
+    transform: scale(1.25);
+    -webkit-clip-path: var(--slice-0);
+    clip-path: var(--slice-0);
+    top: 0;
+    animation-timing-function: step-end;
+}
+
+[glitch]:hover:after {
+    --slice-2: inset(0% 0% 0 0);
+    -webkit-clip-path: var(--slice-2);
+    clip-path: var(--slice-2);
+    animation: glitch 0.1s;
+}
+
+@keyframes glitch {
+    0% {
+        -webkit-clip-path: var(--slice-0);
+        clip-path: var(--slice-0);
+    }
+    10% {
+        -webkit-clip-path: var(--slice-1);
+        clip-path: var(--slice-1);
+    }
+    to {
+        -webkit-clip-path: var(--slice-2);
+        clip-path: var(--slice-2);
+    }
+}
+
+/* ignore, just centering the text */
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-color: black;
+}
+
+.glitch-text {
+    /* Remove default h1 styles */
+    margin: 0;
+    padding: 0;
+    /* Add glitch effect styles */
+    display: inline-block;
+    position: relative;
+    transition: visibility 0.1s;
+}
+
+.glitch-text:hover {
+    visibility: hidden; /* Hide the background text on hover */
+}
